@@ -1,6 +1,17 @@
 redis-ha:
   enabled: false
 
+  ## Repo Server
+repoServer:      
+
+  ## Repo server metrics service configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: false   
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: false 
+
 server:     
   ## Server metrics service configuration
   metrics:
