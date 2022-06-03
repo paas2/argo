@@ -38,6 +38,23 @@ server:
           command: ["bash", "-c"]
           args: ['helm template "$ARGOCD_APP_NAME" -f <(echo "$HELM_VALUES") . > all.yaml && argocd-vault-plugin generate all.yaml'] 
 
+  additionalProjects: 
+  - name: argocd
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    description: Argocd Project
+    sourceRepos:
+    - '*'
+    destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    orphanedResources:
+      warn: false            
+
 ## Repo Server
 repoServer:
 

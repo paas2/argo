@@ -1,22 +1,3 @@
-## Server
-server:
-  additionalProjects: 
-  - name: argocd
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    description: Argocd Project
-    sourceRepos:
-    - '*'
-    destinations:
-    - namespace: argocd
-      server: https://kubernetes.default.svc
-    clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
-    orphanedResources:
-      warn: false
-
 ## Repo Server
 repoServer:
   env:   
