@@ -5,7 +5,7 @@ redis-ha:
 repoServer:
   env:   
     - name: VAULT_ADDR
-      value: http://192.168.59.119:30709      
+      value: http://192.168.59.119:30709        
 
   # -- The number of repo server pods to run
   replicas: 1
@@ -37,4 +37,4 @@ server:
 
     serviceMonitor:
       # -- Enable a prometheus ServiceMonitor
-      enabled: false  
+      enabled: false   
