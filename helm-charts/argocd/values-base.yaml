@@ -2,7 +2,7 @@ global:
   image:
     # -- If defined, a repository applied to all Argo CD deployments
     repository: kadirzade/argocd
-    tag: "v2.3.5"
+    tag: "v2.3.4"
 # This key configures Redis-HA subchart and when enabled (redis-ha.enabled=true)
 # the custom redis deployment is omitted
 # Check the redis-ha chart for more properties
