@@ -1,7 +1,16 @@
 redis-ha:
   enabled: false
 
-server:                    
+server:     
+  ## Server metrics service configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: false
+
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: false
+
   additionalApplications: 
     - name: argocd
       namespace: argocd
