@@ -1,0 +1,93 @@
+server:                    
+  additionalApplications: 
+    - name: argocd
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        helm:
+          version: v3
+          valueFiles:
+          - values.yaml
+          - values-base.yaml  
+          - values-base-uat.yaml                    
+          - values-security-uat.yaml
+        path: helm-charts/argo
+        repoURL: https://github.com/paas2/argocd.git 
+        targetRevision: HEAD      
+
+    - name: infra-apps  
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        helm:
+          version: v3
+          valueFiles:
+          - values.yaml 
+        path: basko/apps
+        repoURL: https://github.com/paas2/security-infra-apps.git 
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true  
+          
+    - name: infra-app-projects
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        path: basko/projects
+        repoURL: https://github.com/paas2/security-infra-apps.git  
+        targetRevision: HEAD
+        directory:
+          recurse: true
+          jsonnet: {}
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true          
+
+    - name: securiy-apps
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        helm:
+          version: v3
+          valueFiles:
+          - values.yaml 
+        path: basko/apps
+        repoURL: https://github.com/paas2-security/secyurity-apps.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true    
+
+    - name: security-app-projects
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        path: basko/projects
+        repoURL: https://github.com/paas2-security/secyurity-apps.git 
+        targetRevision: HEAD
+        directory:
+          recurse: true
+          jsonnet: {}
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true        

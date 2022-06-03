@@ -1,0 +1,6 @@
+dependencies:
+- name: redis-ha
+  repository: file://../redis-ha
+  version: 4.10.4
+digest: sha256:88b0b0d9f75061a3e260b78a5b72bcc9267c8d5ebc5eac755f1e70254cd9a40e
+generated: "2022-03-10T14:11:40.881208+04:00"

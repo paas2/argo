@@ -1,0 +1,98 @@
+# This key configures Redis-HA subchart and when enabled (redis-ha.enabled=true)
+# the custom redis deployment is omitted
+# Check the redis-ha chart for more properties
+redis-ha:
+  # -- Enables the Redis HA subchart and disables the custom Redis single node deployment
+  enabled: true
+  exporter:
+    # -- If `true`, the prometheus exporter sidecar is enabled
+    enabled: true
+
+## Server
+server:
+  # -- The number of server pods to run
+  replicas: 2
+
+  autoscaling:
+    # -- Enable Horizontal Pod Autoscaler ([HPA]) for the Argo CD server
+    enabled: true
+    # -- Minimum number of replicas for the Argo CD server [HPA]
+    minReplicas: 2
+
+  ## Server metrics service configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: true
+
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: true
+
+  # -- Manage Argo CD configmap (Declarative Setup)
+  ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+  configEnabled: true
+  config:
+    configManagementPlugins: |
+      - name: argocd-vault-plugin-helm
+        generate:
+          command: ["bash", "-c"]
+          args: ['helm template "$ARGOCD_APP_NAME" -f <(echo "$HELM_VALUES") . > all.yaml && argocd-vault-plugin generate all.yaml'] 
+
+## Repo Server
+repoServer:
+
+  # -- The number of repo server pods to run
+  replicas: 2
+
+  autoscaling:
+    # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
+    enabled: true
+    # -- Minimum number of replicas for the repo server [HPA]
+    minReplicas: 2
+
+  # -- Environment variables to pass to repo server
+  env: 
+    - name: AVP_TYPE
+      value: vault  
+    - name: AVP_AUTH_TYPE
+      value: k8s       
+
+  ## Repo server metrics service configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: true   
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: true 
+
+  ## Enable Admin ClusterRole resources.
+  ## Enable if you would like to grant cluster rights to Argo CD repo server.
+  clusterAdminAccess:
+    # -- Enable RBAC for local cluster deployments
+    enabled: true
+
+  clusterRoleRules:
+    # -- Enable custom rules for the Repo server's Cluster Role resource
+    enabled: true
+    # -- List of custom rules for the Repo server's Cluster Role resource
+    rules: 
+    - verbs:
+        - create
+      apiGroups:
+        - authentication.k8s.io
+      resources:
+        - tokenreviews
+    - verbs:
+        - create
+      apiGroups:
+        - authorization.k8s.io
+      resources:
+        - subjectaccessreviews  
+
+## Argo Configs
+configs:
+  credentialTemplates: 
+    github-ssh-creds:
+     url: <url>
+     sshPrivateKey: <sshPrivateKey>
+
