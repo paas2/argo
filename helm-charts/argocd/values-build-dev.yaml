@@ -1,6 +1,5 @@
 server:     
   additionalApplications: 
-  
     - name: argocd-deploy-secret
       annotations:
         argocd.argoproj.io/sync-wave: "0"    
@@ -39,7 +38,7 @@ server:
           - values-base-dev.yaml                    
           - values-build-dev.yaml
         path: helm-charts/argocd
-        repoURL: https://github.com/paas2/argo.git
+        repoURL: git@github.com:paas2/argo.git
         targetRevision: dev   
                      
 
