@@ -37,4 +37,27 @@ server:
 
     serviceMonitor:
       # -- Enable a prometheus ServiceMonitor
-      enabled: false        
+      enabled: false   
+
+
+  additionalApplications: 
+    - name: argocd-deploy-secret
+      annotations:
+        argocd.argoproj.io/sync-wave: "0"    
+      namespace: argocd
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: argocd
+      source:
+        plugin:
+          name: argocd-vault-plugin-helm  
+          env:
+            - name: HELM_VALUES
+              value: |
+                # global:   
+                #   env: dev
+                #   clusterName: bwb                  
+        path: helm-charts
+        repoURL: https://github.com/paas2/argo-deploy-secret.git
+        targetRevision: dev               

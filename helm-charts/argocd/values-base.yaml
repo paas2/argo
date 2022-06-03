@@ -106,10 +106,10 @@ repoServer:
       resources:
         - subjectaccessreviews  
 
-## Argo Configs
-configs:
-  credentialTemplates: 
-    github-ssh-creds:
-     url: <url>
-     sshPrivateKey: <sshPrivateKey>
+# ## Argo Configs
+# configs:
+#   credentialTemplates: 
+#     github-ssh-creds:
+#      url: <url>
+#      sshPrivateKey: <sshPrivateKey>
 

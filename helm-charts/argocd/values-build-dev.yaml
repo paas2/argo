@@ -2,6 +2,8 @@ server:
   additionalApplications: 
     - name: argocd
       namespace: argocd
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"      
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
@@ -20,6 +22,8 @@ server:
 
     - name: infra-apps  
       namespace: argocd
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"      
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
@@ -39,6 +43,8 @@ server:
           
     - name: infra-app-projects
       namespace: argocd
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"      
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
@@ -57,6 +63,8 @@ server:
 
     - name: build-apps
       namespace: argocd
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"      
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
@@ -76,6 +84,8 @@ server:
 
     - name: build-app-projects
       namespace: argocd
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"      
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
