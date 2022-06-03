@@ -10,8 +10,6 @@ repoServer:
   autoscaling:
     # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
     enabled: false
-    # -- Minimum number of replicas for the repo server [HPA]
-    minReplicas: 2 
 
   ## Repo server metrics service configuration
   metrics:
@@ -28,9 +26,7 @@ server:
   autoscaling:
     # -- Enable Horizontal Pod Autoscaler ([HPA]) for the Argo CD server
     enabled: false
-    # -- Minimum number of replicas for the Argo CD server [HPA]
-    minReplicas: 2
-
+    
   ## Server metrics service configuration
   metrics:
     # -- Deploy metrics service
