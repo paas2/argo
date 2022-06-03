@@ -45,7 +45,7 @@ server:
       namespace: argocd
       destination:
         namespace: argocd
-        server: git@github.com:paas2/argo.git
+        server: https://kubernetes.default.svc
       project: argocd
       source:
         helm:
