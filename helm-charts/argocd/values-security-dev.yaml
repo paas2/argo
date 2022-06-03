@@ -37,7 +37,7 @@ server:
           - values-base.yaml  
           - values-base-dev.yaml                    
           - values-security-dev.yaml
-        path: helm-charts/argo
+        path: helm-charts/argocd
         repoURL: https://github.com/paas2/argo.git
         targetRevision: dev                
 
