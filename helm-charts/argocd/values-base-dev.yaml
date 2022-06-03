@@ -2,11 +2,7 @@ redis-ha:
   enabled: false
   
 ## Repo Server
-repoServer:
-  env:   
-    - name: VAULT_ADDR
-      value: http://192.168.59.133:30698        
-
+repoServer:      
   # -- The number of repo server pods to run
   replicas: 1
 

@@ -70,14 +70,7 @@ repoServer:
     # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
     enabled: true
     # -- Minimum number of replicas for the repo server [HPA]
-    minReplicas: 2
-
-  # -- Environment variables to pass to repo server
-  env: 
-    - name: AVP_TYPE
-      value: vault  
-    - name: AVP_AUTH_TYPE
-      value: k8s       
+    minReplicas: 2    
 
   ## Repo server metrics service configuration
   metrics:
