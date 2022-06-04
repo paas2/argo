@@ -68,7 +68,8 @@ server:
           version: v3
           valueFiles:
           - values.yaml 
-        path: apps
+          - values-dev.yaml           
+        path: ./
         repoURL: git@github.com:paas2/buildenv-infra-apps.git
         targetRevision: dev
       syncPolicy:
