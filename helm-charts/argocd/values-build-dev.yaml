@@ -77,25 +77,25 @@ server:
           selfHeal: true
           prune: true  
           
-    - name: infra-app-projects
-      namespace: argocd
-      annotations:
-        argocd.argoproj.io/sync-wave: "1"      
-      destination:
-        namespace: argocd
-        server: https://kubernetes.default.svc
-      project: argocd
-      source:
-        path: projects
-        repoURL: git@github.com:paas2/buildenv-infra-apps.git  
-        targetRevision: dev
-        directory:
-          recurse: true
-          jsonnet: {}
-      syncPolicy:
-        automated:
-          selfHeal: true
-          prune: true          
+    # - name: infra-app-projects
+    #   namespace: argocd
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "1"      
+    #   destination:
+    #     namespace: argocd
+    #     server: https://kubernetes.default.svc
+    #   project: argocd
+    #   source:
+    #     path: projects
+    #     repoURL: git@github.com:paas2/buildenv-infra-apps.git  
+    #     targetRevision: dev
+    #     directory:
+    #       recurse: true
+    #       jsonnet: {}
+    #   syncPolicy:
+    #     automated:
+    #       selfHeal: true
+    #       prune: true          
 
     - name: build-apps
       namespace: argocd
