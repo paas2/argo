@@ -67,7 +67,7 @@ server:
         helm:
           version: v3
           valueFiles:
-          - values.yaml 
+          - values-base.yaml 
           - values-dev.yaml           
         path: ./
         repoURL: git@github.com:paas2/buildenv-infra-apps.git
