@@ -69,7 +69,7 @@ server:
           valueFiles:
           - values.yaml 
           - values-dev.yaml 
-        path: apps
+        path: ./
         repoURL: git@github.com:paas2/security-infra-apps.git 
         targetRevision: HEAD
       syncPolicy:
