@@ -31,7 +31,7 @@ server:
                 #   env: dev
                 #   clusterName: bwb                  
         path: helm-charts
-        repoURL: git@github.com:paas2/argo-deploy-secret.git
+        repoURL: htpps//github.com/paas2/argo-deploy-secret.git
         targetRevision: HEAD  
 
     - name: argocd
