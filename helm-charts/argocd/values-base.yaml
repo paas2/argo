@@ -1,3 +1,8 @@
+global:
+  image:
+    # -- If defined, a repository applied to all Argo CD deployments
+    repository: kadirzade/argocd
+    tag: "v2.3.4"
 # This key configures Redis-HA subchart and when enabled (redis-ha.enabled=true)
 # the custom redis deployment is omitted
 # Check the redis-ha chart for more properties
@@ -65,14 +70,7 @@ repoServer:
     # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
     enabled: true
     # -- Minimum number of replicas for the repo server [HPA]
-    minReplicas: 2
-
-  # -- Environment variables to pass to repo server
-  env: 
-    - name: AVP_TYPE
-      value: vault  
-    - name: AVP_AUTH_TYPE
-      value: k8s       
+    minReplicas: 2    
 
   ## Repo server metrics service configuration
   metrics:
@@ -106,10 +104,13 @@ repoServer:
       resources:
         - subjectaccessreviews  
 
-## Argo Configs
-configs:
-  credentialTemplates: 
-    github-ssh-creds:
-     url: <url>
-     sshPrivateKey: <sshPrivateKey>
+# ## Argo Configs
+# configs:
+#   credentialTemplates: 
+#     github-ssh-creds:
+#      url: <url>
+#      sshPrivateKey: <sshPrivateKey>
 
+applicationSet:
+  # -- Enable Application Set controller
+  enabled: false
