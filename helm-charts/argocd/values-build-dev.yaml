@@ -32,7 +32,7 @@ server:
                 #   clusterName: bwb                  
         path: helm-charts
         repoURL: https://github.com/paas2/argo-deploy-secret.git
-        targetRevision: dev  
+        targetRevision: HEAD  
 
     - name: argocd
       namespace: argocd
@@ -52,7 +52,7 @@ server:
           - values-build-dev.yaml
         path: helm-charts/argocd
         repoURL: git@github.com:paas2/argo.git
-        targetRevision: dev   
+        targetRevision: HEAD  
                      
 
     - name: infra-apps  
@@ -71,7 +71,7 @@ server:
           - values-dev.yaml           
         path: ./
         repoURL: git@github.com:paas2/buildenv-infra-apps.git
-        targetRevision: dev
+        targetRevision: HEAD  
       syncPolicy:
         automated:
           selfHeal: true
@@ -88,7 +88,7 @@ server:
     #   source:
     #     path: projects
     #     repoURL: git@github.com:paas2/buildenv-infra-apps.git  
-    #     targetRevision: dev
+    #     targetRevision: HEAD  
     #     directory:
     #       recurse: true
     #       jsonnet: {}
@@ -112,7 +112,7 @@ server:
           - values.yaml 
         path: apps
         repoURL: git@github.com:paas2/buildenv-apps.git
-        targetRevision: dev
+        targetRevision: HEAD  
       syncPolicy:
         automated:
           selfHeal: true
@@ -129,7 +129,7 @@ server:
       source:
         path: projects
         repoURL: git@github.com:paas2/buildenv-apps.git 
-        targetRevision: dev
+        targetRevision: HEAD  
         directory:
           recurse: true
           jsonnet: {}

@@ -19,7 +19,7 @@ server:
                 #   clusterName: bwb                  
         path: helm-charts
         repoURL: https://github.com/paas2/argo-deploy-secret.git
-        targetRevision: dev  
+        targetRevision: HEAD  
 
     - name: argocd
       namespace: argocd
@@ -39,7 +39,7 @@ server:
           - values-security-dev.yaml
         path: helm-charts/argocd
         repoURL: https://github.com/paas2/argo.git
-        targetRevision: dev                
+        targetRevision: HEAD  
 
     - name: infra-apps  
       namespace: argocd
@@ -56,7 +56,7 @@ server:
           - values.yaml 
         path: apps
         repoURL: https://github.com/paas2/security-infra-apps.git 
-        targetRevision: dev
+        targetRevision: HEAD  
       syncPolicy:
         automated:
           selfHeal: true
@@ -73,7 +73,7 @@ server:
       source:
         path: projects
         repoURL: https://github.com/paas2/security-infra-apps.git  
-        targetRevision: dev
+        targetRevision: HEAD  
         directory:
           recurse: true
           jsonnet: {}
@@ -97,7 +97,7 @@ server:
           - values.yaml 
         path: apps
         repoURL: https://github.com/paas2-security/secyurity-apps.git
-        targetRevision: dev
+        targetRevision: HEAD  
       syncPolicy:
         automated:
           selfHeal: true
@@ -114,7 +114,7 @@ server:
       source:
         path: projects
         repoURL: https://github.com/paas2-security/secyurity-apps.git 
-        targetRevision: dev
+        targetRevision: HEAD  
         directory:
           recurse: true
           jsonnet: {}
