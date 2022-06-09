@@ -5,7 +5,7 @@ repoServer:
     - name: AVP_K8S_ROLE
       value: build-dev  
     - name: VAULT_ADDR
-      value: http://192.168.59.133:30698 
+      value: http://host.minikube.internal:30698 
     - name: AVP_TYPE
       value: vault  
     - name: AVP_AUTH_TYPE
