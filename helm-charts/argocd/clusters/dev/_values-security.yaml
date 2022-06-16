@@ -1,11 +1,11 @@
 repoServer:
   env:   
     - name: AVP_K8S_MOUNT_PATH
-      value: auth/sahab2-security-tk      
+      value: auth/sahab2-security-dev      
     - name: AVP_K8S_ROLE
-      value: security-tk  
+      value: security-dev  
     - name: VAULT_ADDR
-      value: http://10.0.2.2:8200 
+      value: http://host.minikube.internal:8200 
     - name: AVP_TYPE
       value: vault  
     - name: AVP_AUTH_TYPE
@@ -48,8 +48,8 @@ server:
           valueFiles:
           - values.yaml
           - values-base.yaml  
-          - values-base-tk.yaml                    
-          - values-security-tk.yaml
+          - ./clusters/dev/values-base.yaml                    
+          - ./clusters/values-security-dev.yaml
         path: helm-charts/argocd
         repoURL: git@github.com:paas2/argo.git
         targetRevision: HEAD 
@@ -68,7 +68,7 @@ server:
           version: v3
           valueFiles:
           - values.yaml 
-          - values-tk.yaml 
+          - values-dev.yaml 
         path: ./
         repoURL: git@github.com:paas2/security-infra-apps.git 
         targetRevision: HEAD
@@ -90,7 +90,7 @@ server:
           version: v3
           valueFiles:
           - values.yaml 
-          - values-tk.yaml 
+          - values-dev.yaml 
         path: ./
         repoURL: git@github.com:paas2-security/secyurity-apps.git 
         targetRevision: HEAD
