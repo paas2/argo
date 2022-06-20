@@ -52,7 +52,7 @@ server:
           - values-security-dev.yaml
         path: helm-charts/argocd
         repoURL: git@github.com:paas2/argo.git
-        targetRevision: HEAD 
+        targetRevision: canpolat 
                      
 
     - name: infra-apps  
