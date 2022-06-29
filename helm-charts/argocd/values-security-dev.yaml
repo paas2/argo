@@ -11,7 +11,7 @@ repoServer:
     - name: AVP_AUTH_TYPE
       value: k8s  
     - name: VAULT_SKIP_VERIFY
-      value: 1   
+      value: "1"   
 
 server:     
   additionalApplications: 
